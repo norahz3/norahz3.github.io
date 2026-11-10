@@ -1,34 +1,35 @@
-# Norah's Den: a personal site
+# Norah's Den
 
-A simple personal website built with Jekyll. GitHub Pages builds and hosts it for free. You write in Markdown, push to GitHub, and the site updates within about a minute.
+My personal site: essays, reading notes, projects, and a design gallery.
 
-## Put it online (one time, about 10 minutes)
+- **Live:** https://norahz3.github.io
+- **Built with:** Jekyll, hosted on GitHub Pages (deploys from `main`, root folder)
 
-1. **Create a GitHub account** at github.com if you don't have one.
-2. **Create a new repository** named exactly `<your-username>.github.io` (for example `norahx.github.io`). Make it **Public**. Don't add a README.
-3. **Upload these files.** On the new repo page, click "uploading an existing file", then drag in *everything inside this folder*, including the folders that start with `_`. Commit.
-   - Tip: if you're on a Mac, folders starting with `_` and `.` can be hidden in Finder. Dragging the whole unzipped folder's contents still works. Or use GitHub Desktop, which is easier for ongoing edits.
-4. **Turn on Pages.** In the repo: Settings → Pages → "Build and deployment" → Source: *Deploy from a branch* → Branch: `main`, folder `/ (root)` → Save.
-5. Wait a minute, then visit `https://<your-username>.github.io`.
+## Publishing a change
 
-If you named the repo something else (like `website`), open `_config.yml` and set `baseurl: "/website"`.
+Edit files, then commit and push. GitHub rebuilds the site in about a minute.
 
-## Edit the basics
+```bash
+git add -A
+git commit -m "Describe the change"
+git push
+```
 
-Open `_config.yml`:
-- `title` is the site's name (currently "Norah's Den"). Change it in this one place.
-- `author` is blank, so your name appears nowhere. Add it whenever you're ready.
-- `tagline` is the big line on the home page.
-- `topics` are the three topics used for writing, reading shelves, and filters.
-- Add your email, LinkedIn, and so on. Blank ones stay hidden.
+You can also edit any file on github.com (pencil icon → commit). If a build fails, GitHub emails you, and the error appears in the repo's **Actions** tab.
 
-Your story lives in `about.md`.
+## Site settings (`_config.yml`)
 
-You can edit any file directly on github.com: open it, click the pencil icon, edit, and commit.
+- `title`: the site's name, shown top-left, in browser tabs, and in the footer.
+- `tagline`, `description`: the big line on the home page and the text under it.
+- `author`: blank, so no name appears anywhere. Add it when you're ready.
+- `topics`: the three topics (`markets`, `design`, `mind`) used for writing, reading shelves, and filters.
+- `email`, `linkedin`, `github`, `substack`: blank links stay hidden.
 
-## Add things
+Your bio lives in `about.md`. Colors and fonts are at the top of `assets/css/style.css`.
 
-**A new post.** Create a file in `_posts/` named `YYYY-MM-DD-short-title.md`:
+## Adding content
+
+**Post:** create `_posts/YYYY-MM-DD-short-title.md`:
 
 ```markdown
 ---
@@ -40,26 +41,29 @@ topic: markets        # markets | design | mind
 Your writing here, in Markdown.
 ```
 
-**A book.** Add an entry to `_data/readings.yml` with a `topic` (`markets`, `design`, or `mind`) and a `status` (`reading` gets a ribbon, `read` goes on the shelf, `next` goes in the Up next list). Pick a spine `color`. The books in there now are examples, so replace them.
+**Draft:** put it in `_drafts/` (no date in the filename). Drafts aren't published.
 
-**A design piece.** Put the image in `assets/img/design/` and add an entry to `_data/design.yml` with `kind: made` or `kind: admired` and a short note. The first three appear on the home page. The four in there now are placeholders.
+**Book:** add an entry to `_data/readings.yml` with a `topic`, a spine `color`, and a `status`: `reading` gets a ribbon, `read` goes on the shelf, `next` goes in the Up next list.
 
-**A project.** Create a file in `_projects/`, like `my-project.md`. Copy the front matter from `example-project.md`. Images go in `assets/img/`.
+**Design piece:** put the image in `assets/img/design/` and add an entry to `_data/design.yml` with `kind: made` or `kind: admired` and a short note. The first three appear on the home page.
 
-**Drafts.** Put unfinished posts in a `_drafts/` folder (no date in the filename). They won't be published.
+**Project:** copy `_projects/example-project.md` to a new file in `_projects/` and edit it. Images go in `assets/img/`.
 
-## A common snag
+**Still placeholders:** the books in `_data/readings.yml`, the four images in `_data/design.yml`, and `_projects/example-project.md`. Replace or remove them.
 
-In the `.yml` files, if a note contains a colon (`:`), wrap the whole note in double quotes, or the site won't build. GitHub emails you if a build fails.
+> **Common snag:** in `.yml` files, wrap any note that contains a colon (`:`) in double quotes, or the build fails.
 
-## Change the look
+## Previewing locally
 
-All colors and fonts are at the top of `assets/css/style.css`.
+Gems install into `vendor/` (ignored by git). This Mac needs Homebrew's Ruby 3.3, because the system Ruby is too old and Ruby 4 is too new for `github-pages`. Anaconda's compiler settings also have to be cleared, or native gems fail to build:
 
-## Use your own domain (optional, later)
+```bash
+export PATH=/opt/homebrew/opt/ruby@3.3/bin:$PATH LANG=en_US.UTF-8
+unset CC CXX CFLAGS LDFLAGS
+bundle install                # first time, or after Gemfile changes
+bundle exec jekyll serve      # then open http://localhost:4000
+```
 
-Buy a domain (e.g. `norah.xyz`) from any registrar. In the repo go to Settings → Pages → Custom domain and follow GitHub's DNS instructions. Then set `url:` in `_config.yml` to your domain.
+## Custom domain (optional)
 
-## Preview on your computer (optional)
-
-You don't need this, but if you want to see changes before pushing: install Ruby, then run `bundle install` and `bundle exec jekyll serve` in this folder, and open http://localhost:4000.
+Buy a domain from any registrar, add it in the repo's **Settings → Pages → Custom domain**, follow GitHub's DNS instructions, then set `url:` in `_config.yml` to the domain.
