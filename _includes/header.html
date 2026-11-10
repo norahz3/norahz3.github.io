@@ -1,0 +1,12 @@
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="site-name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  <nav aria-label="Main">
+    {% assign here = page.url %}
+    <a href="{{ '/writing/' | relative_url }}" {% if here contains '/writing/' %}aria-current="page"{% endif %}>Writing</a>
+    <a href="{{ '/reading/' | relative_url }}" {% if here contains '/reading/' %}aria-current="page"{% endif %}>Reading</a>
+    <a href="{{ '/projects/' | relative_url }}" {% if here contains '/projects/' %}aria-current="page"{% endif %}>Projects</a>
+    <a href="{{ '/design/' | relative_url }}" {% if here contains '/design/' %}aria-current="page"{% endif %}>Design</a>
+    <a href="{{ '/about/' | relative_url }}" {% if here contains '/about/' %}aria-current="page"{% endif %}>About</a>
+  </nav>
+</header>

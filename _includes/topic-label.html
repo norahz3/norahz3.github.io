@@ -1,0 +1,1 @@
+{% assign tl = site.topics | where: "slug", include.slug | first %}{% if tl %}<span class="tag">{{ tl.label }}</span>{% endif %}

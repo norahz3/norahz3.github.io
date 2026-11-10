@@ -1,0 +1,18 @@
+---
+layout: default
+title: Projects
+---
+<article class="page">
+  <h1>Projects</h1>
+  <p class="lede">Research, analysis, and things I've designed or built.</p>
+  <ul class="projects projects--full" role="list">
+    {% assign projects = site.projects | sort: "year" | reverse %}
+    {% for p in projects %}
+    <li>
+      <p class="quiet">{{ p.year }}{% if p.status %}, {{ p.status | downcase }}{% endif %}</p>
+      <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+      <p>{{ p.summary }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</article>

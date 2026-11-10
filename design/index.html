@@ -1,0 +1,28 @@
+---
+layout: default
+title: Design
+---
+<article class="page page--wide">
+  <h1>Design</h1>
+  <p class="lede">Things I've made, and things made by others that I keep coming back to, each with a note on why it works.</p>
+
+  <div class="filters" role="group" aria-label="Filter the gallery" data-filter-for="gallery">
+    <button type="button" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="made" aria-pressed="false">Made by me</button>
+    <button type="button" data-filter="admired" aria-pressed="false">Admired</button>
+  </div>
+
+  <div class="gallery" id="gallery">
+    {% for d in site.data.design %}
+    <figure id="{{ d.title | slugify }}" data-topic="{{ d.kind }}">
+      <img src="{{ d.image | relative_url }}" alt="{{ d.alt | default: d.title }}" loading="lazy">
+      <figcaption>
+        <p class="fig-title"><span class="kind kind--{{ d.kind }}">{% if d.kind == 'made' %}Made{% else %}Admired{% endif %}</span> {{ d.title }}</p>
+        {% if d.credit %}<p class="quiet">{{ d.credit }}</p>{% endif %}
+        {% if d.note %}<p>{{ d.note }}</p>{% endif %}
+        {% if d.link %}<p><a href="{{ d.link }}">{{ d.link_label | default: "See more" }}</a></p>{% endif %}
+      </figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</article>

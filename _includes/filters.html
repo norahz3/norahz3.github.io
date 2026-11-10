@@ -1,0 +1,12 @@
+{% comment %}
+  Topic filter buttons. Items to filter need data-topic="<slug>".
+  Pass group="..." to scope the buttons to one list on the page.
+{% endcomment %}
+<div class="filters" role="group" aria-label="Filter by topic" data-filter-for="{{ include.group }}">
+  <button type="button" data-filter="all" aria-pressed="true">All</button>
+  {% if include.options %}
+    {% for o in include.options %}<button type="button" data-filter="{{ o.slug }}" aria-pressed="false">{{ o.label }}</button>{% endfor %}
+  {% else %}
+    {% for t in site.topics %}<button type="button" data-filter="{{ t.slug }}" aria-pressed="false">{{ t.label }}</button>{% endfor %}
+  {% endif %}
+</div>

@@ -1,0 +1,30 @@
+---
+layout: default
+title: Reading
+---
+<article class="page">
+  <h1>Reading</h1>
+  <p class="lede">My library, one shelf per topic. Books with a ribbon are the ones I'm reading now. Select a book to see my note on it.</p>
+
+  {% include filters.html group="library" %}
+
+  <div id="library">
+    {% for t in site.topics %}
+    {% assign count = site.data.readings | where: "topic", t.slug | where_exp: "b", "b.status != 'next'" | size %}
+    {% if count > 0 %}
+    <section class="topic-shelf" data-topic="{{ t.slug }}">
+      <h2>{{ t.label }}</h2>
+      {% include shelf.html topic=t.slug exclude_next=true %}
+    </section>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  {% assign upnext = site.data.readings | where: "status", "next" %}
+  {% if upnext.size > 0 %}
+  <h2>Up next</h2>
+  <ul class="upnext" role="list">
+    {% for b in upnext %}<li><span class="upnext-title">{{ b.title }}</span> <span class="quiet">{{ b.author }}</span></li>{% endfor %}
+  </ul>
+  {% endif %}
+</article>

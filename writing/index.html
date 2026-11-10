@@ -1,0 +1,23 @@
+---
+layout: default
+title: Writing
+---
+<article class="page">
+  <h1>Writing</h1>
+  <p class="lede">Essays and notes, newest first.</p>
+
+  {% include filters.html group="posts" %}
+
+  <ul class="entries entries--long" id="posts" role="list">
+    {% for post in site.posts %}
+    <li data-topic="{{ post.topic }}">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+      <div>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        {% include topic-label.html slug=post.topic %}
+        {% if post.summary %}<p>{{ post.summary }}</p>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</article>

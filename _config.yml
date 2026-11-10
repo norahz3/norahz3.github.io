@@ -1,0 +1,64 @@
+# ------------------------------------------------------------
+# Site settings — edit these first
+# ------------------------------------------------------------
+title: "Norah's Den"   # the site's name, shown top-left, in browser tabs, and in the footer
+tagline: Notes on markets, the mind, and things made well.
+description: >-
+  Essays, reading notes, projects, and a design gallery on commodities,
+  craft, and how we think.
+author: ""           # leave blank to stay anonymous; add your name whenever you're ready
+
+# Topics used to organize writing, the reading shelves, and filters.
+# "slug" is what you type in a post or book; "label" is what visitors see.
+topics:
+  - slug: markets
+    label: Commodities and markets
+  - slug: design
+    label: Design and craft
+  - slug: mind
+    label: Mind
+
+# Your links. Leave any of them blank ("") to hide it.
+email: ""            # e.g. hello@yourdomain.com
+linkedin: ""         # e.g. https://www.linkedin.com/in/your-handle
+github: ""           # e.g. https://github.com/your-handle
+substack: ""         # optional
+
+# If your repo is named <username>.github.io, leave baseurl empty.
+# If it's named anything else (e.g. "website"), set baseurl: "/website".
+url: ""
+baseurl: ""
+
+# ------------------------------------------------------------
+# Build settings — you shouldn't need to touch these
+# ------------------------------------------------------------
+markdown: kramdown
+theme: null          # use this site's own layouts/CSS, not GitHub's default theme
+permalink: /writing/:year/:title/
+timezone: America/New_York
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "", type: projects }
+    values: { layout: project }
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/

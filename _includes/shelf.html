@@ -1,0 +1,30 @@
+{% comment %}
+  Books from _data/readings.yml as spines on a shelf.
+  Optional: status="reading|read|next", topic="markets", limit=6
+  Books you're reading now get a ribbon.
+{% endcomment %}
+{% assign books = site.data.readings %}
+{% if include.status %}{% assign books = books | where: "status", include.status %}{% endif %}
+{% if include.topic %}{% assign books = books | where: "topic", include.topic %}{% endif %}
+{% if include.exclude_next %}{% assign books = books | where_exp: "b", "b.status != 'next'" %}{% endif %}
+{% if include.limit %}{% assign books = books | slice: 0, include.limit %}{% endif %}
+<ul class="shelf" role="list">
+  {% for b in books %}
+  {% assign h = b.title | size | modulo: 4 %}
+  <li class="spine spine--{{ b.color | default: 'walnut' }} spine--h{{ h }}{% if b.status == 'reading' %} spine--reading{% endif %}">
+    <details>
+      <summary>
+        <span class="spine-title">{{ b.title }}</span>
+        <span class="spine-author">{{ b.author }}</span>
+        {% if b.status == 'reading' %}<span class="sr-only">(reading now)</span>{% endif %}
+      </summary>
+      <div class="card">
+        <p class="card-title">{{ b.title }}</p>
+        <p class="quiet">{{ b.author }}{% if b.status == 'reading' %}, reading now{% elsif b.year %}, read {{ b.year }}{% endif %}</p>
+        {% if b.note %}<p>{{ b.note }}</p>{% endif %}
+        {% if b.post %}<p><a href="{{ b.post | relative_url }}">Read my notes</a></p>{% endif %}
+      </div>
+    </details>
+  </li>
+  {% endfor %}
+</ul>

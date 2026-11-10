@@ -1,0 +1,59 @@
+---
+layout: default
+title: Home
+---
+<section class="hero">
+  <p class="hero-line">{{ site.tagline }}</p>
+  <p class="hero-sub">Essays on commodities, craft, and how we think, plus the books on my desk and a gallery of things I find well made.</p>
+</section>
+
+<section class="block" aria-labelledby="writing">
+  <h2 id="writing">Recent writing</h2>
+  <ul class="entries" role="list">
+    {% for post in site.posts limit: 5 %}
+    <li>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      {% include topic-label.html slug=post.topic %}
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="more"><a href="{{ '/writing/' | relative_url }}">All writing</a></p>
+</section>
+
+<section class="block" aria-labelledby="reading">
+  <h2 id="reading">On the shelf</h2>
+  <p class="sub">Reading now. Select a book to see my note.</p>
+  {% include shelf.html status="reading" %}
+  <p class="more"><a href="{{ '/reading/' | relative_url }}">The whole library</a></p>
+</section>
+
+<section class="block" aria-labelledby="design">
+  <h2 id="design">Design</h2>
+  <p class="sub">Things I've made, and things made by others that I keep coming back to.</p>
+  <ul class="strip" role="list">
+    {% for d in site.data.design limit: 3 %}
+    <li>
+      <a href="{{ '/design/' | relative_url }}#{{ d.title | slugify }}">
+        <img src="{{ d.image | relative_url }}" alt="{{ d.alt | default: d.title }}" loading="lazy">
+      </a>
+      <p><span class="kind kind--{{ d.kind }}">{% if d.kind == 'made' %}Made{% else %}Admired{% endif %}</span> {{ d.title }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="more"><a href="{{ '/design/' | relative_url }}">See the gallery</a></p>
+</section>
+
+<section class="block" aria-labelledby="projects">
+  <h2 id="projects">Selected projects</h2>
+  <ul class="projects" role="list">
+    {% assign projects = site.projects | sort: "year" | reverse %}
+    {% for p in projects limit: 3 %}
+    <li>
+      <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+      <p>{{ p.summary }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="more"><a href="{{ '/projects/' | relative_url }}">All projects</a></p>
+</section>

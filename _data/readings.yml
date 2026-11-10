@@ -1,0 +1,69 @@
+# Your library. These are EXAMPLES — replace them with your own books.
+#
+# topic:  markets | design | mind   (the slugs from _config.yml)
+# status: reading | read | next     (books you're reading get a ribbon)
+# color:  walnut | oxblood | oak | olive | charcoal | navy   (spine color, pick freely)
+# year:   optional, year you finished it
+# note:   optional, one or two sentences of your take
+# post:   optional, link to a longer post, e.g. /writing/2026/some-post/
+
+- title: The World for Sale
+  author: Javier Blas and Jack Farchy
+  topic: markets
+  status: reading
+  color: oxblood
+  note: Example entry. Replace with your own one-line take.
+
+- title: The Prize
+  author: Daniel Yergin
+  topic: markets
+  status: read
+  year: 2025
+  color: walnut
+
+- title: Stuffed and Starved
+  author: Raj Patel
+  topic: markets
+  status: read
+  year: 2026
+  color: olive
+  note: Example entry. What you agreed with, what you didn't.
+  post: /writing/2026/notes-on-stuffed-and-starved/
+
+- title: The Design of Everyday Things
+  author: Don Norman
+  topic: design
+  status: reading
+  color: navy
+  note: Example entry.
+
+- title: The Craftsman
+  author: Richard Sennett
+  topic: design
+  status: read
+  year: 2025
+  color: oak
+
+- title: Thinking in Bets
+  author: Annie Duke
+  topic: mind
+  status: read
+  year: 2025
+  color: charcoal
+
+- title: Four Thousand Weeks
+  author: Oliver Burkeman
+  topic: mind
+  status: reading
+  color: oak
+  note: Example entry.
+
+- title: The Elements of Typographic Style
+  author: Robert Bringhurst
+  topic: design
+  status: next
+
+- title: Notes from a Small Island
+  author: Bill Bryson
+  topic: mind
+  status: next
