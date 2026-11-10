@@ -68,17 +68,38 @@ a:hover { color: var(--walnut); text-decoration-thickness: 3px; }
 .site-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   flex-wrap: wrap;
   gap: .5rem 1.5rem;
   padding: 1.75rem 0;
   font-family: var(--display);
 }
 .site-name {
+  display: inline-flex;
+  align-items: center;
+  gap: .55em;
+  white-space: nowrap;           /* seal and name stay on one line */
   font-weight: 700;
   font-size: 1.15rem;
   color: var(--walnut);
   text-decoration: none;
+}
+/* 花园 seal: two characters stacked, like a traditional name chop */
+.seal {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  padding: .14em .16em;
+  border-radius: 2.5px;
+  background: var(--accent);
+  color: var(--paper);
+  font-family: "Noto Serif SC", "Songti SC", "STSong", serif;
+  font-weight: 700;
+  font-size: .62em;
+  line-height: 1.02;
+  transform: rotate(-2deg);
 }
 .site-header nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
 .site-header nav a {
@@ -367,5 +388,5 @@ h2 { font-size: 1.5rem; font-weight: 600; margin: 0 0 1.25rem; }
 /* Leave room under the ribbon so it never covers a title */
 .spine--reading summary { padding-top: 1.35rem; }
 @media (max-width: 34rem) {
-  .site-header nav { gap: .9rem; font-size: .95rem; }
+  .site-header nav { gap: .35rem .75rem; font-size: .95rem; }  /* all five links fit one row on a 375px phone */
 }

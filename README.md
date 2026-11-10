@@ -1,4 +1,4 @@
-# Norah's Den
+# Norah's Garden
 
 My personal site: essays, reading notes, projects, and a design gallery.
 

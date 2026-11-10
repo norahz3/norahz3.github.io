@@ -12,7 +12,7 @@
   {% for b in books %}
   {% assign h = b.title | size | modulo: 4 %}
   <li class="spine spine--{{ b.color | default: 'walnut' }} spine--h{{ h }}{% if b.status == 'reading' %} spine--reading{% endif %}">
-    <details>
+    <details name="shelf">{% comment %} same name = only one book card open at a time {% endcomment %}
       <summary>
         <span class="spine-title">{{ b.title }}</span>
         <span class="spine-author">{{ b.author }}</span>

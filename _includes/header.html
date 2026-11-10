@@ -1,6 +1,6 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
-  <a class="site-name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  <a class="site-name" href="{{ '/' | relative_url }}"><span class="seal" aria-hidden="true"><span>花</span><span>园</span></span><span>{{ site.title }}</span></a>
   <nav aria-label="Main">
     {% assign here = page.url %}
     <a href="{{ '/writing/' | relative_url }}" {% if here contains '/writing/' %}aria-current="page"{% endif %}>Writing</a>
